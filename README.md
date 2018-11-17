@@ -31,4 +31,6 @@ To show the result of our analysis, we will display the pictures of decision tre
 
 We will split our data into train-validation sets by 50:50, 80:20, etc and report a  classification error.
 
- The classes in our dataset are ordered and not balanced (e.g. there are much more normal wines than excellent or poor ones). So if we find out that there is a large imbalance in there, we may try to balance it out, you can also do that using Scikit learn’s methods.
+We will use validation (or cross validation) to choose the tree-depth that results in the least amount of overfitting.
+
+The classes in our dataset are ordered and not balanced (e.g. there are much more normal wines than excellent or poor ones). So if we find out that there is a large imbalance in there, we may try to balance it out, we can also do that using Scikit learn’s methods.
