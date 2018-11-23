@@ -34,7 +34,7 @@ main <- function(){
   
   
   # Save the output csv file
-  write.csv(data, file=output_file)
+  write.csv(data, file=output_file, row.names=FALSE)
   
 }
 

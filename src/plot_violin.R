@@ -4,7 +4,7 @@
 # This script plot violin and jitter for each of the features and target
 # for red or white wine datasets. The result will be save in one graph.
 #
-# Usage: Rscript plot_violin.R inputfile outputfile
+# Usage: Rscript plot_violin.R input_file output_file
 
 # load libraries
 library(tidyverse)
