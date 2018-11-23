@@ -17,7 +17,7 @@ output_file <- args[2]
 main <- function(){
   
   # read the dataset
-  data <- read.csc(input_file)
+  data <- read.csv(input_file)
   
   #  Combining and categorizing the wine quality to remove the imbalance
   
@@ -27,8 +27,8 @@ main <- function(){
   # The wine qualitis of 6 will be named "medium_high"
   # The wine qualitis of 7 or higher will be named "high"
   
-  data <- data %>% mutate(target="medium_low")
-  data <- data %>%  mutate(target = ifelse(quality == 6, "meduim_high", target))
+  data <- data %>% mutate(target="med_low")
+  data <- data %>%  mutate(target = ifelse(quality == 6, "med_high", target))
   data <- data %>%  mutate(target = ifelse(quality %in% c(3,4), "low", target))
   data <- data %>%  mutate(target = ifelse(quality >= 7, "high", target))
   
