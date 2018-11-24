@@ -3,6 +3,7 @@
 #
 # This script plot violin and jitter for each of the features and target
 # for red or white wine datasets. The result will be save in one graph.
+# The code for plotting refers to lab1 of DSCI 571.
 #
 # Usage: Rscript plot_violin.R input_file output_file
 
@@ -21,83 +22,226 @@ wine_data <- read.csv(input_file)
 # give the target level order
 wine_data <- wine_data %>% 
   mutate(target = factor(target)) %>% 
-  mutate(target = fct_relevel(target, "low", "med_low","med_high", "high"))
+  mutate(target = fct_relevel(target, "low", "med", "high"))
 
 # fixed acidity
 plot_fixed_acidity <- wine_data %>% 
-  ggplot(aes(x = target, y = fixed.acidity)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
-  labs(x = "Wine Quality", y = "Fixed Acidity")
+    group_by(target) %>% 
+    summarise(mean = mean(fixed.acidity),
+              n = length(fixed.acidity),
+              se = sd(fixed.acidity) / sqrt(n)) %>% 
+    ggplot(aes(x = target)) + 
+    geom_violin(data = wine_data,
+              mapping = aes(x = target, y = fixed.acidity)) + 
+    geom_point(aes(y = mean), color = "red", size = 1) +
+    geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                      ymax = mean + qnorm(0.025)*se),
+                  color = "blue",
+                  width = 0.2) +
+    geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = fixed.acidity),
+              alpha = 0.1, 
+              size = 0.5) +
+    labs(x = "Wine Quality", y = "Fixed Acidity")
 
 # volatile acidity
 plot_volatile_acidity <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = volatile.acidity)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(volatile.acidity),
+            n = length(volatile.acidity),
+            se = sd(volatile.acidity) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = volatile.acidity)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = volatile.acidity),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Volatile Acidity")
 
 # citric acid
 plot_citric_acid <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = citric.acid)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(citric.acid),
+            n = length(citric.acid),
+            se = sd(citric.acid) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = citric.acid)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = citric.acid),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Citric Acid")
 
 # residual sugar
 plot_residual_sugar <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = residual.sugar)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(residual.sugar),
+            n = length(residual.sugar),
+            se = sd(residual.sugar) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = residual.sugar)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = residual.sugar),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Residual Sugar")
 
 # chlorides
 plot_chlorides <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = chlorides)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(chlorides),
+            n = length(chlorides),
+            se = sd(chlorides) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = chlorides)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = chlorides),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Chlorides")
 
 # free sulfur dioxide
 plot_free_sulfur <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = free.sulfur.dioxide)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+    group_by(target) %>% 
+    summarise(mean = mean(free.sulfur.dioxide),
+              n = length(free.sulfur.dioxide),
+              se = sd(free.sulfur.dioxide) / sqrt(n)) %>% 
+    ggplot(aes(x = target)) + 
+    geom_violin(data = wine_data,
+                mapping = aes(x = target, y = free.sulfur.dioxide)) + 
+    geom_point(aes(y = mean), color = "red", size = 1) +
+    geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                      ymax = mean + qnorm(0.025)*se),
+                  color = "blue",
+                  width = 0.2) +
+    geom_jitter(data = wine_data,
+                mapping = aes(x = target, y = free.sulfur.dioxide),
+                alpha = 0.1, 
+                size = 0.5) +
   labs(x = "Wine Quality", y = "Free sulfur dioxide")
 
 # total sulfur dioxide
 plot_total_sulfur <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = total.sulfur.dioxide)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+    group_by(target) %>% 
+    summarise(mean = mean(total.sulfur.dioxide),
+              n = length(total.sulfur.dioxide),
+              se = sd(total.sulfur.dioxide) / sqrt(n)) %>% 
+    ggplot(aes(x = target)) + 
+    geom_violin(data = wine_data,
+                mapping = aes(x = target, y = total.sulfur.dioxide)) + 
+    geom_point(aes(y = mean), color = "red", size = 1) +
+    geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                      ymax = mean + qnorm(0.025)*se),
+                  color = "blue",
+                  width = 0.2) +
+    geom_jitter(data = wine_data,
+                mapping = aes(x = target, y = total.sulfur.dioxide),
+                alpha = 0.1, 
+                size = 0.5) +
   labs(x = "Wine Quality", y = "Total sulfur dioxide")
 
 # density
 plot_density <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = density)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(density),
+            n = length(density),
+            se = sd(density) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = density)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = density),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Density")
 
 # pH
 plot_ph <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = pH)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(pH),
+            n = length(pH),
+            se = sd(pH) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = pH)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = pH),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "pH value")
 
 # sulphates
 plot_sulphates <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = sulphates)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(sulphates),
+            n = length(sulphates),
+            se = sd(sulphates) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = sulphates)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = sulphates),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Sulphates")
 
 # alcohol
 plot_alcohol <- wine_data %>% 
-  ggplot(aes(x = factor(target), y = alcohol)) + 
-  geom_violin() +
-  geom_jitter(alpha = 0.1, size = 0.5) +
+  group_by(target) %>% 
+  summarise(mean = mean(alcohol),
+            n = length(alcohol),
+            se = sd(alcohol) / sqrt(n)) %>% 
+  ggplot(aes(x = target)) + 
+  geom_violin(data = wine_data,
+              mapping = aes(x = target, y = alcohol)) + 
+  geom_point(aes(y = mean), color = "red", size = 1) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.025)*se,
+                    ymax = mean + qnorm(0.025)*se),
+                color = "blue",
+                width = 0.2) +
+  geom_jitter(data = wine_data,
+              mapping = aes(x = target, y = alcohol),
+              alpha = 0.1, 
+              size = 0.5) +
   labs(x = "Wine Quality", y = "Alcohol")
 
 # put all the graphs together
