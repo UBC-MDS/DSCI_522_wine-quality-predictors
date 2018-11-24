@@ -14,9 +14,9 @@ Input variables include fixed acidity, volatile acidity, citric acid, residual s
 
 We have used a R script [load_data.R](/src/load_data.R) to load the data from URL. Below are some outputs from the script:
 
-![Load Red Wine Data](/results/load_red_wine.png)
+![Load Red Wine Data](../results/load_red_wine.png)
 
-![Load White Wine Data](/results/load_white_wine.png)
+![Load White Wine Data](../results/load_white_wine.png)
 
 
 ### Proposal
@@ -27,10 +27,8 @@ The question:
 
 In our project, we are going to find the three top input variables that affect the wine quality for both the red and white wines. We will use a decision tree analysis for the physicochemical data (as inputs) and the wine quality (as the output) to determine the three top predictors. The three top predictors will be the closest rule stumps to the tree root. We will do this analysis on both the red and white wine datasets.
 
-To show the result of our analysis, we will display the pictures of decision trees. The three top input variables for each dataset will also be listed. To display the results of the decision tree, we will draw the entire tree, if it is small or just the top half or third of it, If its big.
+Since the outcome of wine are integers, we combine the quality number into 3 or 4 targets. In the 3 targets case, the categories are "low", "med" and "high". In the 4 targets case, the categories are "low", "med_low", "med_high" and "high". We try both ways to determine which is better for fitting our decision tree.
 
-We will split our data into train-validation sets by 50:50, 80:20, etc and report a  classification error.
+To show the result of our analysis, we will display the pictures of decision trees. The red wine set and white wine set will be evaluated separately. The three top input variables for each dataset will also be listed. To display the results of the decision tree, we will draw the top layers of the tree.
 
-We will use validation (or cross validation) to choose the tree-depth that results in the least amount of overfitting.
-
-The classes in our dataset are ordered and not balanced (e.g. there are much more normal wines than excellent or poor ones). So if we find out that there is a large imbalance in there, we may try to balance it out, we can also do that using Scikit learn’s methods.
+The classes in our dataset are ordered and not balanced (e.g. there are much more normal wines than excellent or poor ones). So if we find out that there is a large imbalance in there, we may try to balance it out. In the DecisionTreeClassifier in [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html), there is a hyper-parameter `class_weight` that we can set it to `balanced` to balance our data.

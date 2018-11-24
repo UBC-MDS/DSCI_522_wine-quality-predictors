@@ -1,8 +1,10 @@
 #! /usr/bin/env Rscript 
 # plot_hist.R
+# Created by Iris
 #
 # This script plot histogram for raw or clean wine data sets.
-# The result will be save in png file.
+# It takes input for raw and clean data sets for both red and white wine.
+# The result will be save in four separate png files.
 #
 # Usage: Rscript plot_hist.R raw_red raw_white clean_red clean_white out_raw_red out_raw_white out_clean_red out_clean_white
 
@@ -22,7 +24,7 @@ out_clean_white <- args[8]
 
 # main function
 main <- function(){
-  # plot for data
+  # plot four histograms
   plot_raw(raw_red, "Red Wine Raw Data", out_raw_red)
   plot_raw(raw_white, "White Wine Raw Data", out_raw_white)
   plot_clean(clean_red, "Red Wine Clean Data", out_clean_red)
