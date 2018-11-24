@@ -1,7 +1,17 @@
 #!/usr/bin/env python
-
+# Created by Iris
+#
 # This script takes the clean red or wine data
-# And produces the decision tree of predicting wine quality
+# Produces the decision tree of predicting wine quality
+# Produces an csv file for the importance rank of the features
+# Do analysis for 4 target clean data when target_num = 4
+# And do for 3 target clean data when target_num = 3
+# Use a balanced method when "balanced" set to "true"
+# Use a imbalance method when "balanced" set to "false"
+
+# example usage
+# Python draw_tree.py input_file output_file output_result target_num balanced
+
 
 # import packages
 import pandas as pd
@@ -10,9 +20,6 @@ from sklearn import tree
 from sklearn.model_selection import cross_val_score
 import graphviz
 import argparse
-
-# example usage
-# Python draw_tree.py input_file output_file output_result target_num balanced
 
 # read in command line args
 parser = argparse.ArgumentParser()

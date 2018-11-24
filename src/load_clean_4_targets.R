@@ -1,12 +1,20 @@
-# R script for loading wine data from URL
-library(tidyverse)
+#! /usr/bin/env Rscript 
+# load_clean_3_targets.R
+# Created by Reza, Modified by Iris
+#
+# This script takes the raw data,
+# and combine the qualities into 4 targets: low, med_low, med_high, high.
+# The output file is a clean csv file.
+#
+# Usage: Rscript load_clean_4_targets.R input_file output_file
 
+# load libraries
+library(tidyverse)
 
 # Checking if there is any NA elements in the data sets 
 #red_wine %>% filter(row.has.na)
 #red_wine[rowSums(is.na(red_wine)) > 0,]
 #white_wine[rowSums(is.na(white_wine)) > 0,]
-
 
 # Reading the command line arguments
 args <- commandArgs(trailingOnly = TRUE)
