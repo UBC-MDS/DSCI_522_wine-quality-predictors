@@ -36,7 +36,6 @@ plot_raw <- function(data, title, output){
     mutate(quality = factor(quality)) %>% 
     ggplot(aes(quality)) +
     geom_bar() +
-    #scale_x_discrete(limit = c(3,4,5,6,7,8)) +
     labs(x = "Quality", y = "Observations",
          title = title)
   ggsave(output, width = 4, height = 6, plot = raw_graph)
@@ -47,10 +46,10 @@ plot_clean <- function(data, title, output){
   clean_data <- read.csv(data)
   clean_graph <- clean_data %>% 
     mutate(target = factor(target)) %>% 
-    mutate(target = fct_relevel(target, "low", "med_low","med_high", "high")) %>% 
+    mutate(target = fct_relevel(target, "low", "med", "high")) %>% 
     ggplot(aes(target)) +
     geom_bar() +
-    labs(x = "Quality", y = "Observations",
+    labs(x = "Target", y = "Observations",
          title = title)
   ggsave(output, width = 4, height = 6, plot = clean_graph)
 }

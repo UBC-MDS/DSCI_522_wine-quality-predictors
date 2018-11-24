@@ -5,14 +5,22 @@
 
 # import packages
 import pandas as pd
+import numpy as np
 from sklearn import tree
+from sklearn.model_selection import cross_val_score
 import graphviz
 import argparse
+
+# example usage
+# Python draw_tree.py input_file output_file output_result target_num balanced
 
 # read in command line args
 parser = argparse.ArgumentParser()
 parser.add_argument('input_file')
-parser.add_argument('output_file')
+parser.add_argument('output_file')  # a png file, with no suffix
+parser.add_argument('output_result') # a csv file
+parser.add_argument('target_num') # 3 or 4
+parser.add_argument('balanced') # true or false
 args = parser.parse_args()
 
 # main function
@@ -31,14 +39,22 @@ def get_tree(wine_data):
     # get the column names
     features = ["fixed.acidity", "volatile.acidity", "citric.acid", "residual.sugar", "chlorides",
                "free.sulfur.dioxide", "total.sulfur.dioxide", "density", "pH", "sulphates", "alcohol"]
-    quality = ['low','med_low','med_high','high']
+
+    if args.target_num == "4":
+        quality = ['low','med_low','med_high','high']
+    elif args.target_num == "3" :
+        quality = ['low', 'med', 'high']
 
     # get the features for X and y
     X = wine_data.loc[:, features]
     y = wine_data.target
 
     # fit the model
-    wine_tree = tree.DecisionTreeClassifier(max_depth = 3)
+    if args.balanced == "true":
+        wine_tree = tree.DecisionTreeClassifier(max_depth = 3, class_weight = "balanced")
+    elif args.balanced == "false":
+        wine_tree = tree.DecisionTreeClassifier(max_depth = 3)
+
     wine_tree.fit(X, y)
     tree_data = tree.export_graphviz(wine_tree, out_file=None,
                                     feature_names = features,
@@ -46,6 +62,15 @@ def get_tree(wine_data):
                                     filled=True, rounded=True)
     # draw the tree
     graphviz.Source(tree_data, format = "png").render(args.output_file)
+
+    # calculate the cross validation score
+    scores = pd.DataFrame({'data_name': [args.input_file]})
+    scores['balanced'] = [args.balanced]
+    scores['cross_var_score'] = [np.mean(cross_val_score(wine_tree, X, y, cv = 10))]
+
+    # write the scores to one result csv
+    with open(args.output_result, 'a') as f:
+        scores.to_csv(f, index = False, header = False)
 
 # call main function
 if __name__ == "__main__":
