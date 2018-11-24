@@ -1,0 +1,12 @@
+,feature,importance
+10,alcohol,0.5288391433015964
+1,volatile.acidity,0.18364793455342684
+9,sulphates,0.15953027321966304
+6,total.sulfur.dioxide,0.06649366082096463
+5,free.sulfur.dioxide,0.06148898810434897
+0,fixed.acidity,0.0
+2,citric.acid,0.0
+3,residual.sugar,0.0
+4,chlorides,0.0
+7,density,0.0
+8,pH,0.0

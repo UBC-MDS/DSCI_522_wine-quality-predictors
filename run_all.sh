@@ -27,13 +27,13 @@ Rscript src/plot_violin.R data/clean_white_3_targets.csv results/violin_white.pn
 Rscript src/plot_hist.R data/raw_red.csv data/raw_white.csv data/clean_red_3_targets.csv data/clean_white_3_targets.csv results/hist_raw_red.png results/hist_raw_white.png results/hist_clean_red.png results/hist_clean_white.png
 
 # create decision trees for the 4 targets data
-Python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4 results/tree_scores.csv 4 false
-Python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4_bal results/tree_scores.csv 4 true
-Python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4 results/tree_scores.csv 4 false
-Python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4_bal results/tree_scores.csv 4 true
+Python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4 results/tree_scores.csv results/red_4_imp.csv 4 false
+Python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4_bal results/tree_scores.csv results/red_4_bal_imp.csv 4 true
+Python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4 results/tree_scores.csv results/white_4_imp.csv 4 false
+Python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4_bal results/tree_scores.csv results/white_4_bal_imp.csv 4 true
 
 # create decision trees for the 3 targets data
-Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3 results/tree_scores.csv 3 false
-Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3_bal results/tree_scores.csv 3 true
-Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3 results/tree_scores.csv 3 false
-Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv 3 true
+Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3 results/tree_scores.csv results/red_3_imp.csv 3 false
+Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3_bal results/tree_scores.csv results/red_3_bal_imp.csv 3 true
+Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3 results/tree_scores.csv results/white_3_imp.csv 3 false
+Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true

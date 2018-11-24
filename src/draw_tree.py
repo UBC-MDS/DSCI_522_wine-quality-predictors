@@ -18,7 +18,8 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('input_file')
 parser.add_argument('output_file')  # a png file, with no suffix
-parser.add_argument('output_result') # a csv file
+parser.add_argument('output_result') # a csv file for tree cross val score
+parser.add_argument('output_importance') # a csv file for feature importance
 parser.add_argument('target_num') # 3 or 4
 parser.add_argument('balanced') # true or false
 args = parser.parse_args()
@@ -67,6 +68,13 @@ def get_tree(wine_data):
     scores = pd.DataFrame({'data_name': [args.input_file]})
     scores['balanced'] = [args.balanced]
     scores['cross_var_score'] = [np.mean(cross_val_score(wine_tree, X, y, cv = 10))]
+
+    # write feature scores to an individual csv
+    feature_imp = pd.DataFrame({'feature': features})
+    feature_imp['importance'] = wine_tree.feature_importances_.tolist()
+    feature_imp = feature_imp.sort_values(by = ['importance'], ascending = False)
+    feature_imp.to_csv(args.output_importance)
+
 
     # write the scores to one result csv
     with open(args.output_result, 'a') as f:
