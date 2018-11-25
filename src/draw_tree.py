@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Created by Iris
 #
-# This script takes the clean red or wine data
+# This script takes the clean red or white data
 # Produces the decision tree of predicting wine quality
 # Produces an csv file for the importance rank of the features
 # Do analysis for 4 target clean data when target_num = 4
@@ -10,8 +10,7 @@
 # Use a imbalance method when "balanced" set to "false"
 
 # example usage
-# Python draw_tree.py input_file output_file output_result target_num balanced
-
+# Python draw_tree.py input_file output_file output_result 3 true
 
 # import packages
 import pandas as pd
@@ -25,7 +24,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('input_file')
 parser.add_argument('output_file')  # a png file, with no suffix
-parser.add_argument('output_result') # a csv file for tree cross val score
+parser.add_argument('output_result') # the csv file for tree cross val score
 parser.add_argument('output_importance') # a csv file for feature importance
 parser.add_argument('target_num') # 3 or 4
 parser.add_argument('balanced') # true or false
@@ -83,7 +82,7 @@ def get_tree(wine_data):
     feature_imp.to_csv(args.output_importance)
 
 
-    # write the scores to one result csv
+    # add the scores to one result csv
     with open(args.output_result, 'a') as f:
         scores.to_csv(f, index = False, header = False)
 

@@ -1,8 +1,8 @@
 # run_all.#!/bin/sh
-# Milestone 1
+# Created by Iris
 
-# This is the shell script for generating the analysis
-# for determining the features that affect wine quality the most.
+# This is the draft of shell script for generating the analysis
+# In the stage of Milestone 1, it is just a reference to the progress
 
 # example usage
 # bash run_all.sh
@@ -37,3 +37,6 @@ Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3 results/
 Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3_bal results/tree_scores.csv results/red_3_bal_imp.csv 3 true
 Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3 results/tree_scores.csv results/white_3_imp.csv 3 false
 Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true
+
+# make final report 
+Rscript -e "rmarkdown::render('doc/Report.Rmd')"
