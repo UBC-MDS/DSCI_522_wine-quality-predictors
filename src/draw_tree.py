@@ -48,8 +48,10 @@ def get_tree(wine_data):
                "free.sulfur.dioxide", "total.sulfur.dioxide", "density", "pH", "sulphates", "alcohol"]
 
     if args.target_num == "4":
+        # analyze the 4 target file
         quality = ['low','med_low','med_high','high']
     elif args.target_num == "3" :
+        # analyze the 3 target file
         quality = ['low', 'med', 'high']
 
     # get the features for X and y

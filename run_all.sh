@@ -2,7 +2,6 @@
 # Created by Iris
 
 # This is the draft of shell script for generating the analysis
-# In the stage of Milestone 1, it is just a reference to the progress
 
 # example usage
 # bash run_all.sh
@@ -38,5 +37,5 @@ Python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3_bal resu
 Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3 results/tree_scores.csv results/white_3_imp.csv 3 false
 Python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true
 
-# make final report 
+# make final report
 Rscript -e "rmarkdown::render('doc/Report.Rmd')"
