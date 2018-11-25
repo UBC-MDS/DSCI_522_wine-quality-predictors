@@ -11,11 +11,6 @@
 # load libraries
 library(dplyr)
 
-# Checking if there is any NA elements in the data sets 
-#red_wine %>% filter(row.has.na)
-#red_wine[rowSums(is.na(red_wine)) > 0,]
-#white_wine[rowSums(is.na(white_wine)) > 0,]
-
 # Reading the command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 input_file <- args[1]

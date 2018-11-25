@@ -2,7 +2,7 @@
 # plot_hist.R
 # Created by Iris
 #
-# This script plot histogram for raw or clean wine data sets.
+# This script make bar plots for raw or clean wine data sets.
 # It takes input for raw and clean data sets for both red and white wine.
 # The result will be save in four separate png files.
 #
@@ -24,14 +24,14 @@ out_clean_white <- args[8]
 
 # main function
 main <- function(){
-  # plot four histograms
+  # plot four bar plots
   plot_raw(raw_red, "Red Wine Raw Data", out_raw_red)
   plot_raw(raw_white, "White Wine Raw Data", out_raw_white)
   plot_clean(clean_red, "Red Wine Clean Data", out_clean_red)
   plot_clean(clean_white, "White Wine Clean Data", out_clean_white)
 }
 
-# plot histogram for raw data
+# plot bar plots for raw data
 plot_raw <- function(data, title, output){
   raw_data <- read.csv(data)
   raw_graph <- raw_data %>% 
@@ -43,7 +43,7 @@ plot_raw <- function(data, title, output){
   ggsave(output, width = 4, height = 6, plot = raw_graph)
 }
 
-# plot histogram for clean data
+# plot bar plots for clean data
 plot_clean <- function(data, title, output){
   clean_data <- read.csv(data)
   clean_graph <- clean_data %>% 
