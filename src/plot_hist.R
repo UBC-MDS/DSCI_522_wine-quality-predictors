@@ -6,53 +6,56 @@
 # It takes input for raw and clean data sets for both red and white wine.
 # The result will be save in four separate png files.
 #
-# Usage: Rscript plot_hist.R raw_red raw_white clean_red clean_white out_raw_red out_raw_white out_clean_red out_clean_white
+# Example usage: Rscript plot_hist.R input_file output_file raw
 
 # load libraries
 library(tidyverse)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-raw_red <- args[1]
-raw_white <- args[2]
-clean_red <- args[3]
-clean_white <- args[4]
-out_raw_red <- args[5]
-out_raw_white <- args[6]
-out_clean_red <- args[7]
-out_clean_white <- args[8]
+input_file <- args[1]  # input csv file name
+output_file <- args[2]  # output png file name
+df_type <- args[3]  # "raw" if input is raw, "3" if 3-target, "4" if 4-target
 
-# main function
+# main function: plot the bar plot
 main <- function(){
-  # plot four bar plots
-  plot_raw(raw_red, "Red Wine Raw Data", out_raw_red)
-  plot_raw(raw_white, "White Wine Raw Data", out_raw_white)
-  plot_clean(clean_red, "Red Wine Clean Data", out_clean_red)
-  plot_clean(clean_white, "White Wine Clean Data", out_clean_white)
+  # read csv file
+  wine_data <- read.csv(input_file)
+  
+  # distinguish between data types
+  if (df_type == "raw") {
+    plot_raw(wine_data, output_file)
+  } else if (df_type == "3") {
+    # reorder the levels
+    wine_data <- wine_data %>% 
+      mutate(target = factor(target)) %>% 
+      mutate(target = fct_relevel(target, "low", "med", "high"))
+    plot_clean(wine_data, output_file)
+  } else if (df_type == "4"){
+    # reorder the levels
+    wine_data <- wine_data %>% 
+      mutate(target = factor(target)) %>% 
+      mutate(target = fct_relevel(target, "low", "med_low", "med_high", "high"))
+    plot_clean(wine_data, output_file)
+  }
 }
 
 # plot bar plots for raw data
-plot_raw <- function(data, title, output){
-  raw_data <- read.csv(data)
-  raw_graph <- raw_data %>% 
+plot_raw <- function(data, output){
+  raw_graph <- data %>% 
     mutate(quality = factor(quality)) %>% 
     ggplot(aes(quality)) +
     geom_bar() +
-    labs(x = "Quality", y = "Observations",
-         title = title)
+    labs(x = "Quality", y = "Observations")
   ggsave(output, width = 4, height = 6, plot = raw_graph)
 }
 
 # plot bar plots for clean data
-plot_clean <- function(data, title, output){
-  clean_data <- read.csv(data)
-  clean_graph <- clean_data %>% 
-    mutate(target = factor(target)) %>% 
-    mutate(target = fct_relevel(target, "low", "med", "high")) %>% 
+plot_clean <- function(data, output){
+  clean_graph <- data %>% 
     ggplot(aes(target)) +
     geom_bar() +
-    labs(x = "Target", y = "Observations",
-         title = title)
+    labs(x = "Target", y = "Observations")
   ggsave(output, width = 4, height = 6, plot = clean_graph)
 }
 
