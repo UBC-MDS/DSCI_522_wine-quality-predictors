@@ -12,11 +12,157 @@ In this project, a wine quality dataset set will be used to study the effect of 
 
 ### Dataset
 
-The wine quality data was obtained from UCI Machine Learning Repository [\[1\]](#1), however, the original data was prepared by P. Cortez [\[2\]](#2). The wine data is divided into to datasets for the red and white variants of the Portuguese "Vinho Verde" wine. The most common physicochemical (features) and sensory (target) variables are available in these two datasets, and they have 12 with 1599 red and 4898 white examples totally [\[3\]](#3). The features include fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulfates and alcohol. The target variable is the wine quality which is defined as a numerical score between 0 (the worst wine) and 10 (the best wine). However, in these datasets there is no observation with a quality of lower than 3 and higher than 9.
+The wine quality data was obtained from UCI Machine Learning Repository [\[1\]](#1), however, the original data was prepared by P. Cortez [\[2\]](#2). The wine data is divided into to datasets for the red and white variants of the Portuguese "Vinho Verde" wine. The most common physicochemical (features) and sensory (target) variables are available in these two datasets, and they have 12 with 1599 red and 4898 white examples totally [\[3\]](#3). The features include fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulfates and alcohol. The target variable is the wine quality which is defined as a numerical score between 0 (the worst wine) and 10 (the best wine). However, in these datasets there is no observation with a quality of lower than 3 and higher than 9. Table 1 shows the summary of feature statistics for each dataset.
 
+<br>
+<p style="text-align:center">
+<b>Table 1. The summary of feature statistics for each dataset</b>
+</p>
+<center>
+<table>
+<tr>
+    <th rowspan="2">Feature</th>
+    <th colspan="3">Red wine</th> 
+    <th colspan="3">White wine</th>
+
+</tr>
+<tr>
+    <td>Min</td>
+    <td>Mean</td>
+    <td>Max</td>
+    <td>Min</td>
+    <td>Mean</td>
+    <td>Max</td>
+
+</tr>
+<tr>
+    <td>Fixed acidity</td>
+    <td>4.60</td>
+     <td>8.32</td>
+
+<td>
+15.90
+</td>
+    <td>3.80</td>
+    <td>6.85</td>
+    <td>14.20</td>
+
+</tr>
+<tr>
+    <td>Volatile acidity</td>
+    <td>0.12</td>
+    <td>0.53</td>
+    <td>1.58</td>
+    <td>0.08</td>
+    <td>0.28</td>
+    <td>1.10</td>
+
+</tr>
+<tr>
+    <td>Citric acid</td>
+    <td>0.00</td>
+    <td>0.27</td>
+    <td>1.00</td>
+    <td>0.00</td>
+    <td>0.33</td>
+    <td>1.66</td>
+
+</tr>
+<tr>
+    <td>Residual sugar</td>
+    <td>0.90</td>
+    <td>2.54</td>
+    <td>15.50</td>
+    <td>0.60</td>
+    <td>6.39</td>
+    <td>65.80</td>
+
+</tr>
+<tr>
+    <td>Chlorides</td>
+    <td>0.01</td>
+    <td>0.09</td>
+    <td>0.61</td>
+    <td>0.01</td>
+    <td>0.05</td>
+     <td>0.35</td>
+
+</tr>
+<tr>
+    <td>Free sulfur dioxid</td>
+    <td>1.00</td>
+    <td>15.87</td>
+    <td>72.00</td>
+    <td>2.00</td>
+     <td>35.31</td>
+    <td>289.00</td>
+
+</tr>
+<tr>
+    <td>Total sulfur dioxid</td>
+    <td>6.00</td>
+    <td>46.47</td>
+    <td>289.00</td>
+    <td>9.0</td>
+     <td>138.4</td>
+    <td>440.0</td>
+
+</tr>
+<tr>
+    <td>Density</td>
+    <td>0.990</td>
+     <td>0.997</td>
+    <td>1.004</td>
+    <td>0.987</td>
+     <td>0.994</td>
+    <td>1.039</td>
+
+</tr>
+<tr>
+    <td>pH</td>
+    <td>2.74</td>
+    <td>3.31</td>
+    <td>4.01</td>
+    <td>2.72</td>
+    <td>3.19</td>
+    <td>3.82</td>
+
+</tr>
+<tr>
+    <td>Sulphates</td>
+    <td>0.33</td>
+     <td>0.66</td>
+     <td>2.00</td>
+    <td>0.22</td>
+    <td>0.49</td>
+    <td>1.08</td>
+
+</tr>
+<tr>
+    <td>Alcohol</td>
+    <td>8.40</td>
+    <td>10.42</td>
+    <td>289.00</td>
+    <td>8.00</td>
+    <td>10.51</td>
+    <td>14.20</td>
+
+</tr>
+<tr>
+    <td>Quality</td>
+    <td>3.00</td>
+    <td>5.64</td>
+    <td>8.00</td>
+    <td>3.00</td>
+    <td>5.88</td>
+    <td>9.00</td>
+
+</tr>
+</table>
+</center>
 ### Data cleaning
 
-The datasets have been checked to make sure that no missing element is present. The classes in the datasets for both red and white wine are not balanced. That is because there are much more normal wines than good or bad ones. Figure 1 shows the bar plot of the number of observations for different wine qualities in the red wine dataset. Figure 2 shows a similar bar plot for the white wine dataset.
+The datasets have been checked to make sure that no missing element is present. The classes in the datasets for both red and white wine are not balanced. That is because there are much more normal wines than good or bad ones. Figure 1 shows the bar plot of the number of observations for different wine qualities in the red wine dataset. Figure 2 shows a similar bar plot for the white wine dataset (the number of observations for each quality have been given on top of the bars).
 
 <br>
 <center>
@@ -170,11 +316,11 @@ Figures 11 and 12 show the decision tree for both red and white wines in pattern
 
 ### Results and discussion
 
-Table 1 summarizes all the results of the previous figures. It shows the top three predictors for each tree. The determine the top three predictors, the 'tree.feature\_importances\_' of DecisionTreeClassifier in scikit learn has been used. It returns the Gini importance of that feature. In addition, it shows the average accuracy of a 10-fold cross validation with 90:10 ratio for train: validation sets.
+Table 2 summarizes all the results of the previous figures. It shows the top three predictors for each tree. The determine the top three predictors, the 'tree.feature\_importances\_' of DecisionTreeClassifier in scikit learn has been used. It returns the Gini importance of that feature. In addition, it shows the average accuracy of a 10-fold cross validation with 90:10 ratio for train: validation sets.
 
 <br>
 <p style="text-align:center">
-<b>Table 1. A summary of the decision tree analysis</b>
+<b>Table 2. A summary of the decision tree analysis</b>
 </p>
 <center>
 <table style="width:39%;">
@@ -289,4 +435,4 @@ Finally, we pick the three top predictors from the decision analysis of pattern 
 
 #### References
 
-<a name="1"></a> \[1\] \[Wine Quality Data Set\](<https://archive.ics.uci.edu/ml/datasets/Wine+Quality>), UCI Machine Learning Repository.</br> NA <a name="3"></a> \[3\] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br> <a name="4"></a> \[4\] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/>
+<a name="1"></a> \[1\] \[Wine Quality Data Set\](<https://archive.ics.uci.edu/ml/datasets/Wine+Quality>), UCI Machine Learning Repository.</br> <a name="2"></a>\[2\] P. Cortez, from University of Minho, Guimar?es, Portugal (<http://www3.dsi.uminho.pt/pcortez>).</br> <a name="3"></a> \[3\] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br> <a name="4"></a> \[4\] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/>
