@@ -160,6 +160,8 @@ The wine quality data was obtained from UCI Machine Learning Repository [\[1\]](
 </tr>
 </table>
 </center>
+</br>
+
 ### Data cleaning
 
 The datasets have been checked to make sure that no missing element is present. The classes in the datasets for both red and white wine are not balanced. That is because there are much more normal wines than good or bad ones. Figure 1 shows the bar plot of the number of observations for different wine qualities in the red wine dataset. Figure 2 shows a similar bar plot for the white wine dataset (the number of observations for each quality have been given on top of the bars).
@@ -316,7 +318,7 @@ Figures 11 and 12 show the decision tree for both red and white wines in pattern
 
 ### Results and discussion
 
-Table 2 summarizes all the results of the previous figures. It shows the top three predictors for each tree. The determine the top three predictors, the 'tree.feature\_importances\_' of DecisionTreeClassifier in scikit learn has been used. It returns the Gini importance of that feature. In addition, it shows the average accuracy of a 10-fold cross validation with 90:10 ratio for train: validation sets.
+Table 2 summarizes all the results of the previous figures. It shows the top three predictors for each tree. To determine the top three predictors, the 'tree.feature\_importances\_' of DecisionTreeClassifier in scikit learn has been used. It returns the Gini importance of that feature. In addition, it shows the average accuracy of a 10-fold cross validation with 90:10 ratio for train: validation sets.
 
 <br>
 <p style="text-align:center">
