@@ -289,4 +289,4 @@ Finally, we pick the three top predictors from the decision analysis of pattern 
 
 #### References
 
-<a name="1"></a> \[1\] \[Wine Quality Data Set\](<https://archive.ics.uci.edu/ml/datasets/Wine+Quality>), UCI Machine Learning Repository.</br> <a name="2"></a>\[2\] P. Cortez, from University of Minho, Guimarães, Portugal (<http://www3.dsi.uminho.pt/pcortez>).</br> <a name="3"></a> \[3\] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br> <a name="4"></a> \[4\] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/>
+<a name="1"></a> \[1\] \[Wine Quality Data Set\](<https://archive.ics.uci.edu/ml/datasets/Wine+Quality>), UCI Machine Learning Repository.</br> NA <a name="3"></a> \[3\] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br> <a name="4"></a> \[4\] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/>

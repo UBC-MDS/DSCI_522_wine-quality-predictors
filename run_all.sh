@@ -18,12 +18,19 @@ Rscript src/load_clean_4_targets.R data/raw_white.csv data/clean_white_4_targets
 Rscript src/load_clean_3_targets.R data/raw_red.csv data/clean_red_3_targets.csv
 Rscript src/load_clean_3_targets.R data/raw_white.csv data/clean_white_3_targets.csv
 
-# create violin plots for the 3 targets data
-Rscript src/plot_violin.R data/clean_red_3_targets.csv results/violin_red.png
-Rscript src/plot_violin.R data/clean_white_3_targets.csv results/violin_white.png
+# create violin plots for 3-targets data and 4-targets data
+Rscript src/plot_violin.R data/clean_red_3_targets.csv results/violin_red.png 3
+Rscript src/plot_violin.R data/clean_white_3_targets.csv results/violin_white.png 3
+Rscript src/plot_violin.R data/clean_red_4_targets.csv results/old_violin_red.png 4
+Rscript src/plot_violin.R data/clean_white_4_targets.csv results/old_violin_white.png 4
 
 # create histograms for raw and clean data sets
-Rscript src/plot_hist.R data/raw_red.csv data/raw_white.csv data/clean_red_3_targets.csv data/clean_white_3_targets.csv results/hist_raw_red.png results/hist_raw_white.png results/hist_clean_red.png results/hist_clean_white.png
+Rscript src/plot_hist.R data/raw_red.csv results/hist_raw_red.png raw
+Rscript src/plot_hist.R data/raw_white.csv results/hist_raw_white.png raw
+Rscript src/plot_hist.R data/clean_red_4_targets.csv results/old_hist_clean_red.png 4
+Rscript src/plot_hist.R data/clean_white_4_targets.csv results/old_hist_clean_white.png 4
+Rscript src/plot_hist.R data/clean_red_3_targets.csv results/hist_clean_red.png 3
+Rscript src/plot_hist.R data/clean_white_3_targets.csv results/hist_clean_white.png 3
 
 # create decision trees for the 4 targets data
 Python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4 results/tree_scores.csv results/red_4_imp.csv 4 false

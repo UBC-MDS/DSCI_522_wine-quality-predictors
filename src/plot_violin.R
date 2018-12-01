@@ -6,7 +6,7 @@
 # for red or white wine datasets. The result will be save in one graph.
 # The code for plotting refers to lab1 of DSCI 571.
 #
-# Usage: Rscript plot_violin.R input_file output_file
+# Example usage: Rscript plot_violin.R input_file output_file 3
 
 # load libraries
 library(tidyverse)
@@ -14,8 +14,9 @@ library(cowplot)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-input_file <- args[1]
-output_file <- args[2]
+input_file <- args[1]  # input csv file
+output_file <- args[2] # output png file
+target_num <- args[3] # "3" for 3-target data, "4" for 4-target data
 
 # The main function
 main <- function(){
@@ -24,9 +25,17 @@ main <- function(){
   wine_data <- read.csv(input_file)
   
   # give the target level order
-  wine_data <- wine_data %>% 
-    mutate(target = factor(target)) %>% 
-    mutate(target = fct_relevel(target, "low", "med", "high"))
+  if (target_num == "3") {
+    # reorder factor for 3-target data
+    wine_data <- wine_data %>% 
+      mutate(target = factor(target)) %>% 
+      mutate(target = fct_relevel(target, "low", "med", "high"))
+  } else if (target_num == "4") {
+    # reorder factor for 4-target data
+    wine_data <- wine_data %>% 
+      mutate(target = factor(target)) %>% 
+      mutate(target = fct_relevel(target, "low", "med_low", "med_high", "high"))
+  }
   
   # fixed acidity
   plot_fixed_acidity <- wine_data %>% 
