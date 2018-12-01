@@ -47,7 +47,7 @@ plot_raw <- function(data, output){
     ggplot(aes(quality)) +
     geom_bar() +
     labs(x = "Quality", y = "Observations")
-  ggsave(output, width = 4, height = 6, plot = raw_graph)
+  ggsave(output, width = 4, height = 3, plot = raw_graph)
 }
 
 # plot bar plots for clean data
@@ -56,7 +56,7 @@ plot_clean <- function(data, output){
     ggplot(aes(target)) +
     geom_bar() +
     labs(x = "Target", y = "Observations")
-  ggsave(output, width = 4, height = 6, plot = clean_graph)
+  ggsave(output, width = 4, height = 3, plot = clean_graph)
 }
 
 # call main function
