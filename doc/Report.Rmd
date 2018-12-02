@@ -211,7 +211,7 @@ These figures suggest that alcohol is probably the most important predictor for 
 ### Data analysis: Decision tree classifier
 
 In this study, the three top features that affect the wine quality for both the red and white wines should be determined, and a decision tree classifier will be used for this purpose. A decision tree is a classifier that uses a tree-like model for the decisions and their possible outcomes. What makes it useful for this study is that The lesson is it chooses the attributes one at a time, according to some criteria, and it tries to find the best attribute each time, so it allows to rank the predictive features and choose the best ones [[4]](#4).
-Since this study only looks for the top three predictors, the tree depth will be set to 3, and this hyperparameter will not be subjected to optimization. However, a 10-fold cross validation with a 90:10 ratio (train: validation) was used to calculate the accuracy of the classifier on the validation sets. Both pattern 1 and 2 for the red and white wine have analyzed using the decision tree classifier. In addition, the scikit learn class_weight attribute has been used to balance the observations. It can automatically adjust some weights inversely proportional to class frequencies in the input data. The analysis has been done with and without balancing the datasets.
+Since this study only looks for the top three predictors, the tree depth will be set to 3, and this hyperparameter will not be subjected to optimization. However, a 10-fold cross validation with a 90:10 ratio (train: validation) was used to calculate the accuracy of the classifier on the validation sets. Both pattern 1 and 2 for the red and white wine have analyzed using the decision tree classifier. In addition, the scikit learn class_weight attribute has been used to balance the observations. It can automatically adjust some weights inversely proportional to class frequencies in the input data [[5]](#5). The analysis has been done with and without balancing the datasets.
 
 Figures 11 and 12 show the decision tree for both red and white wines in pattern 1 without balancing.
 <br><br><br>
@@ -281,8 +281,9 @@ It seems that balancing the data set in scikit-learn decreases the accuracy. Thi
 Finally, we pick the three top predictors from the decision analysis of pattern 2 with balancing. For red wines, they are sulphates, alcohol, and volatile acidity respectively. For white wines, they are alcohol, free sulfur dioxide, and	volatile acidity. These results are consistent with the exploratory data analysis results mentioned before. So Alcohol and volatile acidity are the common important features for both red and white wines.
 
 #### References
-
-<a name="1"></a> [1] [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Wine+Quality), UCI Machine Learning Repository.</br>
+  
+<a name="1"></a> [1] <a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality">Wine Quality Data Set</a>, UCI Machine Learning Repository.</br>
 <a name="2"></a>[2] P. Cortez, from University of Minho, Guimar?es, Portugal (http://www3.dsi.uminho.pt/pcortez).</br>
 <a name="3"></a> [3] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br>
 <a name="4"></a> [4] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/>
+<a name="5"></a> [5] <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">Scikit-learn documentation.</a><br/>
