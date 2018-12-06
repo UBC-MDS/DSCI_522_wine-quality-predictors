@@ -9,8 +9,8 @@
 # Example usage: Rscript plot_violin.R input_file output_file 3
 
 # load libraries
-library(tidyverse)
-library(cowplot)
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(cowplot))
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)

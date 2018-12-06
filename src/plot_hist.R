@@ -10,7 +10,7 @@
 # Example usage: Rscript plot_hist.R input_file output_file raw
 
 # load libraries
-library(tidyverse)
+suppressPackageStartupMessages(library(tidyverse))
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)

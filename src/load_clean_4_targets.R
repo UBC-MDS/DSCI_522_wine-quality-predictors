@@ -9,7 +9,7 @@
 # Usage: Rscript load_clean_3_targets.R input_file output_file
 
 # load libraries
-library(tidyverse)
+suppressPackageStartupMessages(library(tidyverse))
 
 # Reading the command line arguments
 args <- commandArgs(trailingOnly = TRUE)
