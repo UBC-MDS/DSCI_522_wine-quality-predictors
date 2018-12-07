@@ -56,28 +56,28 @@ results/hist_clean_white.png : src/plot_hist.R data/clean_white_3_targets.csv
 results/tree_red_4.png results/tree_scores.csv results/red_4_imp.csv : src/draw_tree.py data/clean_red_4_targets.csv
 	python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4 results/tree_scores.csv results/red_4_imp.csv 4 false
 # red wine, balanced
-results/tree_red_4_bal.png results/tree_scores.csv results/red_4_bal_imp.csv : src/draw_tree.py data/clean_red_4_targets.csv
+results/tree_red_4_bal.png results/red_4_bal_imp.csv : src/draw_tree.py data/clean_red_4_targets.csv
 	python src/draw_tree.py data/clean_red_4_targets.csv results/tree_red_4_bal results/tree_scores.csv results/red_4_bal_imp.csv 4 true
 # white wine, imbalanced
-results/tree_white_4.png results/tree_scores.csv results/white_4_imp.csv : src/draw_tree.py data/clean_white_4_targets.csv
+results/tree_white_4.png results/white_4_imp.csv : src/draw_tree.py data/clean_white_4_targets.csv
 	python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4 results/tree_scores.csv results/white_4_imp.csv 4 false
 # white wine, balanced
-results/tree_white_4_bal.png results/tree_scores.csv results/white_4_bal_imp.csv : src/draw_tree.py data/clean_white_4_targets.csv
+results/tree_white_4_bal.png results/white_4_bal_imp.csv : src/draw_tree.py data/clean_white_4_targets.csv
 	python src/draw_tree.py data/clean_white_4_targets.csv results/tree_white_4_bal results/tree_scores.csv results/white_4_bal_imp.csv 4 true
 
 # create decision trees for the 3 targets data
 
 # red wine, imbalanced
-results/tree_red_3.png results/tree_scores.csv results/red_3_imp.csv : src/draw_tree.py data/clean_red_3_targets.csv
+results/tree_red_3.png results/red_3_imp.csv : src/draw_tree.py data/clean_red_3_targets.csv
 	python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3 results/tree_scores.csv results/red_3_imp.csv 3 false
 # red wine, balanced
-results/tree_red_3_bal.png results/tree_scores.csv results/red_3_bal_imp.csv : src/draw_tree.py data/clean_red_3_targets.csv
+results/tree_red_3_bal.png results/red_3_bal_imp.csv : src/draw_tree.py data/clean_red_3_targets.csv
 	python src/draw_tree.py data/clean_red_3_targets.csv results/tree_red_3_bal results/tree_scores.csv results/red_3_bal_imp.csv 3 true
 # white wine, imbalanced
-results/tree_white_3.png results/tree_scores.csv results/white_3_imp.csv : src/draw_tree.py data/clean_white_3_targets.csv
+results/tree_white_3.png results/white_3_imp.csv : src/draw_tree.py data/clean_white_3_targets.csv
 	python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3 results/tree_scores.csv results/white_3_imp.csv 3 false
 # white wine, balanced
-results/tree_white_3_bal.png results/tree_scores.csv results/white_3_bal_imp.csv : src/draw_tree.py data/clean_white_3_targets.csv
+results/tree_white_3_bal.png results/white_3_bal_imp.csv : src/draw_tree.py data/clean_white_3_targets.csv
 	python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true
 
 # make final report

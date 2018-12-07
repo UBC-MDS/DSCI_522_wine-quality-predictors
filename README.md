@@ -1,16 +1,20 @@
 # DSCI 522 Project: Wine Quality Predictors
 
-### Team Members
+## Team Members
 - Reza Bagheri (github ID: reza-bagheri)
 - Luo Yang (github ID: lyiris22)
 
-### Summary
+## Summary
 
-In this project, we used the [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) to explore the effect of different parameters on wine quality. The main method we used is the decision tree from [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) to rank the importance of parameters, separately for red wine and white wine. We wrote R scripts to clean the data and make visualizations, and a Python script to generate decision tree.
+In this project, we tried to answer the question: **what are the top three predictors for wine quality?**
 
-Among the 11 features of wine, our result shows that *sulphates*, *alcohol*, and *volatile acidity* are the three top predictors to red wine quality respectively. For white wine, the three top predictors are *alcohol*, *free sulfur dioxide*, and	*volatile acidity*. Our final report include the details of analysis and how we came to the final conclusion.
+We used the [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) [1] from UCI Machine Learning Repository [2] to explore the effect of different parameters on both red and white wine quality. The main method we used is the decision tree from [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) to rank the importance of parameters, separately for red wine and white wine. We wrote R scripts to clean the data and make visualizations, and a Python script to generate decision tree.
 
-### File Structure
+Among the 11 features, our result shows that for red wine,  *sulphates*, *alcohol*, and *volatile acidity* are the three top predictors respectively. For white wine, the three top predictors are *alcohol*, *free sulfur dioxide*, and	*volatile acidity*.
+
+Our report include the details of analysis and how we came to the final conclusion.
+
+## File Structure
 
 `data/` folder contains csv files used for analysis, include raw data, clean data of two different patterns, for both red wine and red wine.
 
@@ -23,7 +27,7 @@ Among the 11 features of wine, our result shows that *sulphates*, *alcohol*, and
 In the root folder, `README.md` is an introduction to the project. `run_all.sh` is a draft of shell script that runs all the scripts to generate data and graphs.
 And `Makefile` is used to build pipeline.
 
-### Data Analysis
+## Data Analysis
 
 First, we used [load_write_raw_data.R](https://github.com/UBC-MDS/DSCI_522_wine-quality-predictors/blob/master/src/load_write_raw_data.R) to load the [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) from URL. The arguments it takes include a URL and a name for output file. The output file is a raw data csv file.
 - Example usage: `Rscript src/load_write_raw_data.R 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv'`
@@ -46,16 +50,48 @@ Finally, we summarized our results and made a rendered report [Report.md](https:
 
 For the pipeline, we have an shell script [run_all.sh](https://github.com/UBC-MDS/DSCI_522_wine-quality-predictors/blob/master/run_all.sh) for reference. We also have a [Makefile](https://github.com/UBC-MDS/DSCI_522_wine-quality-predictors/blob/master/Makefile) in the root folder. The `make all` command can run all the scripts, generate graphs and csv files, and render the final report.
 
-### Dependencies
+## Usage
 
-- R packages:
+The project can be reproduced with Make or using Docker. You can clone or download the project repository, navigate to the root folder, then run the example code provided below.
+
+#### Make
+
+- To generate the data analysis:
+> `make all`
+
+- To clean up the generated files:
+> `make clean`
+
+#### Docker
+
+- To get the [docker image](https://hub.docker.com/r/luoyang2/dsci_522_wine-quality-predictors/) for this project:
+> `docker pull luoyang2/dsci_522_wine-quality-predictors`
+
+- To generate the data anlysis:
+> `docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/wine_quality_image luoyang2/dsci_522_wine-quality-predictors make -C '/home/wine_quality_image' all`
+
+- To clean up the generated files:
+> `docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/wine_quality_image luoyang2/dsci_522_wine-quality-predictors make -C '/home/wine_quality_image' clean`
+
+Note that you need to replace the `PATH_ON_YOUR_COMPUTER` with the absolute path to the root of this repository on your local computer. You can use `pwd` to find the current path.
+
+## Dependencies
+
+- R (version 3.5.1) packages:
   - dplyr (0.7.6)
   - tidyverse (1.2.1)
   - cowplot (0.9.3)
 
-- Python packages:
+- Python (version 3.6.5) packages:
   - numpy (1.14.3)
   - pandas (0.23.0)
   - sklearn (0.19.1)
   - graphviz (0.10.1)
   - argparse (1.1)
+
+- Make (version 3.81)
+
+## References
+
+- [1] P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+- [2] Dua, D. and Karra Taniskidou, E. (2017). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
