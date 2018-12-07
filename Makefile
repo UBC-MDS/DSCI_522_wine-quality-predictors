@@ -80,8 +80,13 @@ results/tree_white_3.png results/white_3_imp.csv : src/draw_tree.py data/clean_w
 results/tree_white_3_bal.png results/white_3_bal_imp.csv : src/draw_tree.py data/clean_white_3_targets.csv
 	python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true
 
+# generate a makefile graph
+Makefile.png :
+	makefile2graph > Makefile.dot
+	dot -Tpng Makefile.dot -o Makefile.png
+
 # make final report
-doc/Report.md : results/violin_red.png results/violin_white.png results/old_violin_red.png results/old_violin_white.png results/hist_raw_red.png results/hist_raw_white.png results/old_hist_clean_red.png results/old_hist_clean_white.png results/hist_clean_red.png results/hist_clean_white.png results/tree_red_4.png results/tree_red_4_bal.png results/tree_white_4.png results/tree_white_4_bal.png results/tree_red_3.png results/tree_red_3_bal.png results/tree_white_3.png results/tree_white_3_bal.png
+doc/Report.md : results/violin_red.png results/violin_white.png results/old_violin_red.png results/old_violin_white.png results/hist_raw_red.png results/hist_raw_white.png results/old_hist_clean_red.png results/old_hist_clean_white.png results/hist_clean_red.png results/hist_clean_white.png results/tree_red_4.png results/tree_red_4_bal.png results/tree_white_4.png results/tree_white_4_bal.png results/tree_red_3.png results/tree_red_3_bal.png results/tree_white_3.png results/tree_white_3_bal.png Makefile.png
 	Rscript -e "rmarkdown::render('doc/Report.Rmd')"
 
 # clean the outputs
@@ -128,4 +133,6 @@ clean :
 	rm -f results/tree_white_4_bal
 	rm -f results/tree_scores.csv
 	rm -f Rplots.pdf
+	rm -f Makefile.dot
+	rm -f Makefile.png
 	rm -f doc/Report.md
