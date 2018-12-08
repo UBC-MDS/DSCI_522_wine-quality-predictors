@@ -81,8 +81,9 @@ results/tree_white_3_bal.png results/white_3_bal_imp.csv : src/draw_tree.py data
 	python src/draw_tree.py data/clean_white_3_targets.csv results/tree_white_3_bal results/tree_scores.csv results/white_3_bal_imp.csv 3 true
 
 # generate a makefile graph
-Makefile.png :
+Makefile.dot :
 	makefile2graph > Makefile.dot
+Makefile.png : Makefile.dot
 	dot -Tpng Makefile.dot -o Makefile.png
 
 # make final report
