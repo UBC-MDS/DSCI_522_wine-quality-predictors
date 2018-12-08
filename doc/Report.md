@@ -166,10 +166,10 @@ The wine quality data was obtained from UCI Machine Learning Repository [\[1\]](
 
 The datasets have been checked to make sure that no missing element is present. The classes in the datasets for both red and white wine are not balanced. That is because there are much more normal wines than good or bad ones. Figure 1 shows the bar plot of the number of observations for different wine qualities in the red wine dataset. Figure 2 shows a similar bar plot for the white wine dataset (the number of observations for each quality have been given on top of the bars). <br>
 
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
 <img src="../results/hist_raw_red.png" style="width: 100%">Figure 1. The bar plot of the number of observations for different wine qualities in the red wine dataset
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-right: 15%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
 <img src="../results/hist_raw_white.png" style="width: 100%">Figure 2. The bar plot of the number of observations for different wine qualities in the white wine dataset
 </p>
 <p style="clear: both;">
@@ -177,19 +177,19 @@ The datasets have been checked to make sure that no missing element is present. 
 
 To overcome these problems, some of the values if the quality variables have combined together and the resulting values have been turned into categorical values. To goal was to combine the qualities with a very low number of observations. Two different patterns have been tried for this purpose. Figures 3 and 4 show how this transformation has been done for the first pattern. <br>
 
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
 <img src="../results/old_hist_clean_red.png" width="450px">Figure 3. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 1)
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-right: 15%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
 <img src="../results/old_hist_clean_white.png" width="450px" style="width: 100%">Figure 4. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 1)
 </p>
 <p style="clear: both;">
 <br> In this pattern, the observations of poor wine qualities of 3 and 4 have been combined into a category of "low" quality to increase the number of observations. Similarly, any good quality equal to or higher than 7 has been converted into a category of "high" quality. The middle quality values of 5 and 6 have been converted into categories of "med-low" and "med-high" respectively. Figures 5 and 6 show how this transformation has been done in the second pattern. <br>
 
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
 <img src="../results/hist_clean_red.png" width="450px">Figure 5. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 2)
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 30%; margin-right: 15%; margin-bottom: 0.5em;">
+<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
 <img src="../results/hist_clean_white.png" width="450px" style="width: 100%">Figure 6. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 2)
 </p>
 <p style="clear: both;">
