@@ -71,6 +71,7 @@ def get_tree(wine_data):
                                     rotate = True,
                                     filled=True,
                                     rounded=True,
+                                    impurity = False,
                                     precision = 1)
     # draw the tree
     graphviz.Source(tree_data, format = "png").render(args.output_file)
