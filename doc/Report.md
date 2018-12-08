@@ -166,34 +166,54 @@ The wine quality data was obtained from UCI Machine Learning Repository [\[1\]](
 
 The datasets have been checked to make sure that no missing element is present. The classes in the datasets for both red and white wine are not balanced. That is because there are much more normal wines than good or bad ones. Figure 1 shows the bar plot of the number of observations for different wine qualities in the red wine dataset. Figure 2 shows a similar bar plot for the white wine dataset (the number of observations for each quality have been given on top of the bars). <br>
 
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
-<img src="../results/hist_raw_red.png" style="width: 100%">Figure 1. The bar plot of the number of observations for different wine qualities in the red wine dataset
+<br>
+<center>
+<img src="../results/hist_raw_red.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 1. The bar plot of the number of observations for different wine qualities in the red wine dataset
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
-<img src="../results/hist_raw_white.png" style="width: 100%">Figure 2. The bar plot of the number of observations for different wine qualities in the white wine dataset
+<br>
+<center>
+<img src="../results/hist_raw_white.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 2. The bar plot of the number of observations for different wine qualities in the white wine dataset
 </p>
-<p style="clear: both;">
-<br> These figures clearly show that both datasets are imbalanced. In addition, the wine quality is a numerical variable and it is more meaningful to be converted into a categorical variable before starting the decision tree analysis.
+<br>
+
+These figures clearly show that both datasets are imbalanced. In addition, the wine quality is a numerical variable and it is more meaningful to be converted into a categorical variable before starting the decision tree analysis.
 
 To overcome these problems, some of the values if the quality variables have combined together and the resulting values have been turned into categorical values. To goal was to combine the qualities with a very low number of observations. Two different patterns have been tried for this purpose. Figures 3 and 4 show how this transformation has been done for the first pattern. <br>
 
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
-<img src="../results/old_hist_clean_red.png" width="450px">Figure 3. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 1)
+<center>
+<img src="../results/old_hist_clean_red.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 3. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 1)
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
-<img src="../results/old_hist_clean_white.png" width="450px" style="width: 100%">Figure 4. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 1)
+<br>
+<center>
+<img src="../results/old_hist_clean_white.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 4. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 1)
 </p>
-<p style="clear: both;">
-<br> In this pattern, the observations of poor wine qualities of 3 and 4 have been combined into a category of "low" quality to increase the number of observations. Similarly, any good quality equal to or higher than 7 has been converted into a category of "high" quality. The middle quality values of 5 and 6 have been converted into categories of "med-low" and "med-high" respectively. Figures 5 and 6 show how this transformation has been done in the second pattern. <br>
-
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-left: 10%; margin-right: 10%; margin-bottom: 0.5em;">
-<img src="../results/hist_clean_red.png" width="450px">Figure 5. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 2)
+<br> In this pattern, the observations of poor wine qualities of 3 and 4 have been combined into a category of "low" quality to increase the number of observations. Similarly, any good quality equal to or higher than 7 has been converted into a category of "high" quality. The middle quality values of 5 and 6 have been converted into categories of "med-low" and "med-high" respectively. Figures 5 and 6 show how this transformation has been done in the second pattern. <br> <br>
+<center>
+<img src="../results/hist_clean_red.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 5. The bar plot of the number of observations for different wine qualities in the cleaned red wine dataset (pattern 2)
 </p>
-<p style="float: left; font-size: 12pt; font-weight: bold; text-align: center; width: 20%; margin-right: 15%; margin-bottom: 0.5em;">
-<img src="../results/hist_clean_white.png" width="450px" style="width: 100%">Figure 6. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 2)
+<br>
+<center>
+<img src="../results/hist_clean_white.png" width="350px"/>
+</center>
+<p style="text-align:center">
+Figure 6. The bar plot of the number of observations for different wine qualities in the cleaned white wine dataset (pattern 2)
 </p>
-<p style="clear: both;">
-<br> In this pattern, the observations of poor wine with qualities equal or less than 4 have been combined into a category of "low" quality, and any good quality equal or higher than 7 has been converted into a category of "high" quality. The middle quality values of 5 and 6 have been combined into a "med" category. As the figures show these transformations can relieve the imbalance of the observations, but cannot completely remove it.
+<br> <br> In this pattern, the observations of poor wine with qualities equal or less than 4 have been combined into a category of "low" quality, and any good quality equal or higher than 7 has been converted into a category of "high" quality. The middle quality values of 5 and 6 have been combined into a "med" category. As the figures show these transformations can relieve the imbalance of the observations, but cannot completely remove it.
 
 ### Exploratory data analysis
 
@@ -343,19 +363,19 @@ It is important to note that only for one case (Pattern 1, red wine with balanci
 
 It seems that balancing the data set in scikit-learn decreases the accuracy. This can be attributed to the fact that without proper weighting of the less abundant target categories, the algorithm can get a higher score with labeling most of the examples with more abundant target categories and ignoring the less abundant ones at a lower cost. Finally, we pick the three top predictors from the decision analysis of pattern 2 with balancing. For red wines, they are sulphates, alcohol, and volatile acidity respectively. For white wines, they are alcohol, free sulfur dioxide, and volatile acidity. These results are consistent with the exploratory data analysis results mentioned before. So Alcohol and volatile acidity are the common important features for both red and white wines.
 
-#### Conclusions
+### Conclusions
 
 In this study a decision tree classifier was used to determine the top three predictors for the red and wine quality in a public dataset. The data cleaning was showed to be an important step which affects the later results. Having a balanced dataset is also important. This study was carried out on a dataset which was not balanced and we used a cleaning pattern and Scikit learn balancing feature to improve it. The results were consistent with an initial exploratory data analysis. Sulphates and alcohol were the most important predictors for red and white wine respectively, and alcohol and volatile acidity were found to be the common important features for both red and white wines.
 
-#### Future work
+### Future work
 
 This study has used the decision tree classifier to find the top three predictors. We know that ensemble methods like random forest can improve the results, so it can be used in this study to improve the accuracy. In addition some other learning algorithms like support vector machines or neural networks can be tried too, and these methods can be compared together to see whether changing the algorithm changes the top predictors and which one gives the highest accuracies?
 
-#### References
+### References
 
 <a name="1"></a> \[1\] <a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality">Wine Quality Data Set</a>, UCI Machine Learning Repository.</br> <a name="2"></a>\[2\] P. Cortez, University of Minho, Guimares, Portugal (<http://www3.dsi.uminho.pt/pcortez>).</br> <a name="3"></a> \[3\] P. Cortez at al., "Modeling wine preferences by data mining from physicochemical properties", *Decision Support Systems* 47 (**2009**) 547-533.</br> <a name="4"></a> \[4\] M. Kubat, An Introduction to Machine Learning, Springer International Publishing, **2015**.<br/> <a name="5"></a> \[5\] <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">Scikit-learn documentation.</a><br/>
 
-#### Appendix 1: Exploratory data analysis
+### Appendix 1: Exploratory data analysis
 
 The effect of each wine feature on the quality has been studied using exploratory data visualization of the cleaned datasets. Figure A.1 shows the violin and jitter plots of each feature versus red wine quality in the cleaned dataset with pattern 1. The error bars have been shown too. Figure A.2 shows a similar plot for the white wine in this cleaned dataset (pattern 1). Figure A.3 shows the same plots for the white wine in the cleaned dataset with pattern 2. </br> <br> <br>
 <center>
@@ -382,7 +402,7 @@ The effect of each wine feature on the quality has been studied using explorator
 
 These figures suggest that alcohol is probably the most important predictor for both red and white wines since the difference between the alcohol value of different qualities is larger than its standard error for both red and white wines.
 
-#### Appendix 2: Decision trees
+### Appendix 2: Decision trees
 
 The decision trees for all the remaining dataset are given here. Figures A.4 and A.5 show the decision tree for both red and white wines in pattern 1 without balancing. <br><br><br>
 <center>
