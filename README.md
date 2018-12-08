@@ -25,7 +25,7 @@ Our report include the details of analysis and how we came to the final conclusi
 `src/` folder contains R and Python scripts for loading and cleaning data, plot graphs, and drawing decision trees.
 
 In the root folder, `README.md` is an introduction to the project. `run_all.sh` is a draft of shell script that runs all the scripts to generate data and graphs.
-And `Makefile` is used to build pipeline.
+`Makefile` is used to build pipeline, and `Makefile.png` is the dependency diagram. `Dockerfile` is used to build a docker image. We also have `CONDUCT.md` as a code of conduct.
 
 ## Data Analysis
 
@@ -93,7 +93,8 @@ Note that you need to replace the `PATH_ON_YOUR_COMPUTER` with the absolute path
   - graphviz (0.10.1)
   - argparse (1.1)
 
-- Make (version 3.81)
+- Make (3.81)
+- Docker (18.06.1)
 
 ## References
 
